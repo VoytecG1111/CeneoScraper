@@ -35,12 +35,12 @@ def get_element(ancestor, selector=None, attribute=None, return_list=False):
 
 product_code = "123849599"
 url = f"https://www.ceneo.pl/{product_code}#tab=reviews"
-all_opinions = []
 while(url):
-    print(url)    
+    print(url)
     response = requests.get(url)
     page_dom = BeautifulSoup(response.text, "html.parser")
     opinions = page_dom.select("div.js_product-review")
+    all_opinions = []
     for opinion in opinions:
         single_opinion = {}
         for key, value in selectors.items():
